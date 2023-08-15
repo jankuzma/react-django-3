@@ -50,9 +50,15 @@ class UserLoginView(APIView):
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
 class UserLogoutView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
         request.session.flush()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ListTrackView(generics.ListAPIView):
+    queryset = Track.objects.all()
+    serializer_class = TrackSerializer
