@@ -20,9 +20,11 @@ const AuthProvider = ({children}) => {
                     });
             if (response.status === 201){
                 console.log('registration successful')
+                alert('registration successful')
             }
         } catch (error){
             console.log('registration unsuccessful')
+            alert('registration unsuccessful')
         }
     }
 
