@@ -11,14 +11,14 @@ class Author(models.Model):
 
 
 class Track(models.Model):
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL)
-    audio_file = models.FileField(upload_to='tracks/')
-    date_of_upload = models.DateTimeField(default=datetime.datetime.now)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+    audio_file = models.FileField(upload_to='tracks/', null=True)
+    date_of_upload = models.DateTimeField(default=datetime.datetime.now )
 
 
 class Album(models.Model):
     name = models.CharField(max_length=256)
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     date_of_release = models.DateField(null=True)
 
 
